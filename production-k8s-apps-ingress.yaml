@@ -16,7 +16,7 @@ spec:
             name: jitsi-web
             port:
               number: 80
-        path: /jitsi
+        path: /
         pathType: ImplementationSpecific
   tls:
   - hosts:
