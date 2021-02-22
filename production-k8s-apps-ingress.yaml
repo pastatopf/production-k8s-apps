@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-production
+  name: jenkins-ingress
+  namespace: prod-apps
+spec:
+  rules:
+  - host: oscars-stuff.de
+    http:
+      paths:
+      - backend:
+          service:
+            name: jitsi-web
+            port:
+              number: 80
+        path: /jitsi
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - oscars-stuff.de
+    secretName: jenkins-tls
